@@ -1,0 +1,15 @@
+<h2>All recipes</h2>
+<hr>
+<% @recipes.each do |recipe| %>
+    <div class="col-md-2">
+        <section class="chef_info center">
+
+        </section>
+    <div>
+    <div class= "col-md-8 well">
+    <h4><%= link_to recipe.name, "Recipe", model %></h4>
+    <p><%= recipe.summary %></p>
+
+
+    </div>
+<%end%>
