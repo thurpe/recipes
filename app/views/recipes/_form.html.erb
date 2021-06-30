@@ -18,7 +18,7 @@
         </div><br>
 
         <div class= "form-group">
-        <%= f.submit 'Save Recipe', class: 'btn btn-success btn-block'%>  
+        <%= f.submit(@recipe.new_record? ? 'Create Recipe': 'Update Recipe', class: 'btn btn-success btn-block') %>  
         </div>
     </div>
 </div>

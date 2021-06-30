@@ -1,5 +1,6 @@
 <div class='row g-5'>
-<h1>Create a new Recipe</h1>
-<hr/>
+<%= render 'shared/page_title', title: "New Recipe"%>
+<%= render 'shared/error'%>
+
 <%= render 'form', recipe: @recipe%>
 </div>
