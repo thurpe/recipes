@@ -1,4 +1,4 @@
-<%= form_for @recipe do |f| %>
+<%= form_for(@recipe, html: { multipart:true}) do |f| %>
 <div class='row'>
     <div class="col-lg-6">
         <div class= "form-group">
@@ -9,7 +9,12 @@
         <div class= "form-group">
         <%= f.label :summary, class:"form-label"%>
         <%= f.text_area :summary, class:"form-control",rows:6%>
-        </div>
+        </div><br>
+
+        <span class="picture">
+        <%=f.file_field :picture, accept: "image/jpeg,image/gif,/image/png"%>
+        </span>
+
     </div>
     <div class="col-lg-6">
         <div class= "form-group">
@@ -23,3 +28,15 @@
     </div>
 </div>
 <%end%>
+
+<script type="text/javascript">
+$ (document).ready(function () {
+    $('#recipe_picture').bind('change', function() {
+        console.log('Go fuck your self');
+        size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5){
+        alert('Maximum file size is 5MB. Please choose a smaller file');
+    }
+    });
+});
+</script>

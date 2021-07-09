@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
     def index
-        @recipes = Recipe.all
+        @recipes = Recipe.paginate(page: params[:page], per_page: 4)
     end
 
     def show
@@ -38,12 +38,20 @@ class RecipesController < ApplicationController
         end
     end
 
-    def save
-
+    def like
+        @recipe = Recipe.find(params[:id])
+        like = Like.create(like: params[:like], chef: Chef.first, recipe: @recipe)
+        if like.valid?
+            flash[:success] = "You like this recipe"
+            redirect_to recipes_path(recipe_params)
+        else
+            flash[:danger] = "You already performed this action"
+            redirect_to recipes_path(recipe_params)
+        end
     end
 
     private
     def recipe_params
-        params.require(:recipe).permit(:name, :summary, :description)
+        params.require(:recipe).permit(:name, :summary, :description, :picture)
     end
 end

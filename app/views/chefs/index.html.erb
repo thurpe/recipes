@@ -1,9 +1,9 @@
-<%= render 'shared/page_title', title: "All Recipes"%>
+<%= render 'shared/page_title', title: "All Chefs"%>
 <%= will_paginate %>
-<% @recipes.each do |recipe| %>
+<% @chefs.each do |recipe| %>
 <div class='row'>
     <div class='col-md-2 center'>
-    <%= link_to gravatar_for(recipe.chef, size: 100), chef_path(recipe.chef) %>
+    <%= gravatar_for recipe.chef, size: 100 %>
     <h5> Chef name:<%= recipe.chef.chefname %></h5>
     </div>
 
